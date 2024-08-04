@@ -20,3 +20,7 @@ WHERE t_visit.vst_date BETWEEN DATE_SUB(NOW(), INTERVAL 1 DAY) AND NOW()
 
 
 REPLACE INTO t_fdh_send_flag (service_date_time, cid, total_amout, invoice_number, vn, flag, status, api_response, transaction_uid, datetime_send) VALUES ( "{{  $json.service_date_time }}","{{ $json.cid }}",{{ $json.total_amout }},"{{ $json.invoice_number }}","{{ $json.vn }}",'1',{{ $json.status }},'{{ $json.apiResponse.message }}',"{{ $json.transaction_uid }}", "{{ $now.format('yyyy-MM-dd HH:mm:ss') }}" )
+
+
+
+REPLACE INTO t_fdh_send_flag (service_date_time, cid, total_amout, invoice_number, vn, flag, status, api_response, transaction_uid, datetime_send) VALUES ( "{{  $json.service_date_time }}","{{ $json.cid }}",{{ $json.total_amout }},"{{ $json.invoice_number }}","{{ $json.vn }}",'1',{{ $json.status }},'{{ $json.apiResponse }}',"{{ $json.transaction_uid }}", "{{ $now.format('yyyy-MM-dd HH:mm:ss') }}" )
