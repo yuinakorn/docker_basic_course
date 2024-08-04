@@ -1,0 +1,18 @@
+-- mysql
+SELECT 
+left(t_visit.vst_date,16) AS service_date_time,
+t_person.cid AS cid,
+(SELECT hcode FROM t_config LIMIT 1) AS hcode,
+t_invoice.total AS total_amout,
+t_invoice.invoice_number AS invoice_number,
+t_visit.vn,
+  '{{ $json.data }}' AS token
+,t_fdh_send_flag.flag
+,t_fdh_send_flag.`status`
+ FROM t_visit
+INNER JOIN t_invoice ON t_visit.vn = t_invoice.vn AND t_visit.hn = t_invoice.hn
+INNER JOIN t_person ON t_person.hn = t_visit.hn
+LEFT JOIN t_fdh_send_flag ON t_invoice.invoice_number = t_fdh_send_flag.invoice_number AND t_invoice.vn = t_fdh_send_flag.vn 
+AND t_person.cid = t_fdh_send_flag.cid 
+WHERE t_visit.vst_date BETWEEN DATE_SUB(NOW(), INTERVAL 1 DAY) AND NOW()
+-- (t_fdh_send_flag.flag <> '1' OR t_fdh_send_flag.flag is NULL) AND (t_fdh_send_flag.`status` <> '200' OR t_fdh_send_flag.`status` IS NULL)
