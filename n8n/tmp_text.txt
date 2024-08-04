@@ -18,4 +18,3 @@ WHERE t_visit.vst_date BETWEEN DATE_SUB(NOW(), INTERVAL 1 DAY) AND NOW()
 -- (t_fdh_send_flag.flag <> '1' OR t_fdh_send_flag.flag is NULL) AND (t_fdh_send_flag.`status` <> '200' OR t_fdh_send_flag.`status` IS NULL)
 
 
-"67F9A8522F43267D90ED12AD51F16D4246743EE557DA2EAF4AAC8D495902269C",
