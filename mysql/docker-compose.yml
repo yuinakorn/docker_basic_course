@@ -5,8 +5,8 @@ services:
     ports:
       - 3307:3306
     volumes:
-      - "/Users/yuinakorn/_workspace/Docker/mariadb/data:/var/lib/mysql"
-      - "/Users/yuinakorn/_workspace/Docker/mariadb/conf:/etc/mysql/conf.d"
+      - "./data:/var/lib/mysql"
+      - "./conf:/etc/mysql/conf.d"
     environment:
       MARIADB_USER: ssj
       MARIADB_PASSWORD: ssj1234
